@@ -1,0 +1,38 @@
+<div *ngIf="currentContact" class="edit-form">
+    <h4>Tutorial</h4>
+    <form>
+        <div class="form-group">
+            <label for="nom_prenom">nom_prenom</label>
+            <input type="text" class="form-control" [(ngModel)]="currentContact.nom_prenom" name="nom_prenom" />
+        </div>
+        <div class="form-group">
+            <label for="email">email</label>
+            <input type="text" class="form-control" id="email" [(ngModel)]="currentContact.email" name="email" />
+        </div>
+
+
+    </form>
+
+    <button class="badge badge-danger mr-2" (click)="openModal('custom-modal-1')">
+        Delete
+    </button>
+
+    <p>{{ message }}</p>
+</div>
+
+<div *ngIf="!currentContact">
+    <br />
+    <p>Cannot access this Tutorial...</p>
+</div>
+
+
+
+    <jw-modal id="custom-modal-1">
+        <h1 style="color: red;">Are you sure ?</h1>
+       
+        <h5>Deleting Contact</h5>
+
+        <button (click)="deleteContact();">Delete </button>
+        <button (click)="closeModal('custom-modal-1');">Close</button>
+    </jw-modal>
+

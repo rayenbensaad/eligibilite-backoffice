@@ -1,0 +1,67 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="header">
+                        <h4 class="title">Reponses de formulaire</h4>
+                        <p class="category">articles ...</p>
+                        <button style="float: right;" class="m-3 btn btn-sm btn-danger" (click)="removeAllContact()">
+                            Remove All
+                          </button>
+                    </div>
+                   
+                    <div class="content table-responsive table-full-width">
+                        <table class="table table-hover table-striped">
+                            <thead>
+                                <tr>
+                                    <th> numero </th>
+                                    <th> ID </th>
+                                    <th> nom & prenom</th>
+                                    <th> email </th>
+                                    <th> subject </th>
+                                    <th> message </th>
+                                    <th> actions </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let row of contacts; let i=index;"
+                                [class.active]="i == currentIndex" (mouseenter)="setActiveContact(row, i)">
+                                    <td> {{i +1}} </td>
+                                    <td>{{row.id}}</td>
+                                    <td>{{row.nom_prenom}}</td>
+                                    <td>{{row.email}}</td>
+                                    <td>{{row.subject}}</td>
+                                    <td>{{row.message}}</td>
+                                    <td >
+                                        <a class="badge badge-warning" routerLink="/detailContact/{{ row.id }}">
+                                            Detail 
+                                        </a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div *ngIf="currentContact">
+                    <h4>Article :</h4>
+                    <div>
+                        <label><strong>Nom et prenom :</strong></label> {{ currentContact.nom_prenom }}
+                    </div>
+                    <div>
+                        <label><strong>Email:</strong></label>
+                        {{ currentContact.email }}
+                    </div>
+                   
+             
+                </div>
+            
+             
+            </div>
+        </div>
+    </div>
+</div>
+

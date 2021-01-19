@@ -1,0 +1,69 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="header">
+                        <h4 class="title">Reponses de formulaire</h4>
+                        <p class="category">articles ...</p>
+                        <button style="float: right;" class="m-3 btn btn-sm btn-danger" (click)="removeAllForms()">
+                            Remove All
+                          </button>
+                    </div>
+                   
+                    <div class="content table-responsive table-full-width">
+                        <table class="table table-hover table-striped">
+                            <thead>
+                                <tr>
+                                    <th> numero </th>
+                                    <th> ID </th>
+                                    <th> nom & prenom</th>
+                                    <th>code postale </th>
+                                    <th>numero Telephone </th>
+                                    <th> email </th>
+                                    <th> date rappel </th>
+                                    <th> actions </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let row of forms; let i=index;"
+                                [class.active]="i == currentIndex" (mouseenter)="setActiveForm(row, i)">
+                                    <td> {{i +1}} </td>
+                                    <td>{{row.id}}</td>
+                                    <td>{{row.nom_prenom}}</td>
+                                    <td>{{row.code_postal}}</td>
+                                    <td>{{row.num_tel}}</td>
+                                    <td>{{row.email}}</td>
+                                    <td>{{row.date_rappel}}</td>
+                                    <td >
+                                        <a class="badge badge-warning" routerLink="/detailForm/{{ row.id }}">
+                                            Detail
+                                        </a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div *ngIf="currentForm">
+                    <h4>Article :</h4>
+                    <div>
+                        <label><strong>Nom et prenom :</strong></label> {{ currentForm.nom_prenom }}
+                    </div>
+                    <div>
+                        <label><strong>Email:</strong></label>
+                        {{ currentForm.email }}
+                    </div>
+                   
+             
+                </div>
+            
+             
+            </div>
+        </div>
+    </div>
+</div>
+
