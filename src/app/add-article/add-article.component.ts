@@ -12,8 +12,8 @@ export class AddArticleComponent implements OnInit {
     author: '',
     subject: '',
     content: '',
-    picture:''
   };
+  selectedFile :File;
   submitted = false;
 
   constructor(private articleService: ArticleServiceService) { }
@@ -21,15 +21,32 @@ export class AddArticleComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  onFileChanged(event) {
+    const file = event.target.files[0];
+    this.selectedFile=file;
+    var formData = new FormData();  
+    //formData.append('File', this.selectedFile, this.selectedFile.name);
+    //console.log(this.selectedFile) 
+    console.log(this.selectedFile.name);
+
+    
+  }
   saveArticle() {
+    
+    var formData = new FormData();  
+    formData.append('author', this.post.author);
+    formData.append('subject', this.post.subject);
+    formData.append('content', this.post.content);
+    formData.append('file', this.selectedFile, this.selectedFile.name);
+    
     const data = {
       author: this.post.author,
       subject: this.post.subject,
       content: this.post.content,
-      picture: this.post.picture
+      picture: this.selectedFile
     };
 
-    this.articleService.create(data)
+    this.articleService.create(formData)
       .subscribe(
         response => {
           console.log(response);
@@ -46,7 +63,7 @@ export class AddArticleComponent implements OnInit {
       author: '',
       subject: '',
       content: '',
-      picture:''
+     
     };
   }
 

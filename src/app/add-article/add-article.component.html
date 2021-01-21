@@ -38,11 +38,13 @@
       <div class="form-group">
         <label for="content">picture</label>
         <input
+          type="file"
           class="form-control"
           id="picture"
           required
           [(ngModel)]="post.picture"
           name="picture"
+          (change)="onFileChanged($event)"
         />
       </div>
   
