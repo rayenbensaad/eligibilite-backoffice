@@ -26,7 +26,8 @@
                             </thead>
                             <tbody>
                                 <tr *ngFor="let row of contacts; let i=index;"
-                                [class.active]="i == currentIndex" (mouseenter)="setActiveContact(row, i)">
+                                [class.active]="i == currentIndex" (mouseenter)="setActiveContact(row, i)"
+                                >
                                     <td> {{i +1}} </td>
                                     <td>{{row.id}}</td>
                                     <td>{{row.nom_prenom}}</td>
@@ -34,9 +35,13 @@
                                     <td>{{row.subject}}</td>
                                     <td>{{row.message}}</td>
                                     <td >
-                                        <a class="badge badge-warning" routerLink="/detailContact/{{ row.id }}">
-                                            Detail 
-                                        </a>
+                                        <i class="glyphicon glyphicon-eye-open" style="color: rgb(31, 0, 209);cursor: pointer;" routerLink="/detailContact/{{ row.id }}">
+                                            
+                                        </i>
+                                        
+                                        <i  class='glyphicon glyphicon-trash' style="color: red;cursor: pointer; float: right;" (click)="openModal('custom-modal-1')">
+                                             
+                                        </i>
                                     </td>
                                 </tr>
                             </tbody>
@@ -65,3 +70,20 @@
     </div>
 </div>
 
+
+
+<jw-modal id="custom-modal-1">
+    <div style="justify-content: center;" class="modal-header">
+        <span (click)="closeModal('custom-modal-1');" class="close">X</span>
+
+        <h1 style="color: white;">Are you sure ?</h1>
+    </div>
+   
+   
+    <div class="modal-body">
+        <h3>Deleting Contact</h3>
+
+    <button (click)="deleteContact('custom-modal-1');">Delete </button>
+    <button (click)="closeModal('custom-modal-1');">Close</button>
+    </div>
+</jw-modal>

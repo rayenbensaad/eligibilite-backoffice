@@ -8,12 +8,13 @@ jw-modal {
     .jw-modal {
         /* modal container fixed across whole screen */
         position: fixed;
-        top: 0;
-        right: 0;
+        top: 150px;
         bottom: 0;
-        left: 200px;
-        width: 80%;
-
+        margin-left: 300px;
+       
+        width: 60%; /* Full width */
+        height: 100%; /* Full height */
+   
         /* z-index must be higher than .jw-modal-background */
         z-index: 1000;
         
@@ -21,12 +22,16 @@ jw-modal {
         overflow: auto;
 
         .jw-modal-body {
-            padding: 20px;
-            background: #fff;
-
-            /* margin exposes part of the modal background */
-            margin: 40px;
+         
+          border: 1px solid #888;
+            background-color: #fefefe;
+            
+            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+         
         }
+       
+        .modal-body {padding: 2px 16px;}
+
     }
 
     .jw-modal-background {
@@ -40,7 +45,6 @@ jw-modal {
         /* semi-transparent black  */
         background-color: #000;
         opacity: 0.75;
-        
         /* z-index must be below .jw-modal and above everything else  */
         z-index: 900;
     }
@@ -50,3 +54,4 @@ body.jw-modal-open {
     /* body overflow is hidden to hide main scrollbar when modal window is open */
     overflow: hidden;
 }
+

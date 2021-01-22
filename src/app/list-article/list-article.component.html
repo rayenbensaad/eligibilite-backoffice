@@ -34,7 +34,14 @@
                                     <td>{{row.content}}</td>
                                     <td>{{row.picture}}</td>
                                     <td >
-                                        actions</td>
+                                        <i class="glyphicon glyphicon-edit" style="color: rgb(31, 0, 209);cursor: pointer;" routerLink="/editArticle/{{ row.id }}">
+                                            
+                                        </i>
+                                        
+                                        <i  class='glyphicon glyphicon-trash' style="color: red;cursor: pointer; float: right;" (click)="openModal('custom-modal-1')">
+                                             
+                                        </i>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -68,3 +75,22 @@
     </div>
 </div>
 
+
+
+
+
+<jw-modal id="custom-modal-1">
+    <div style="justify-content: center;" class="modal-header">
+        <span (click)="closeModal('custom-modal-1');" class="close">X</span>
+
+        <h1 style="color: white;">Are you sure ?</h1>
+    </div>
+   
+   
+    <div class="modal-body">
+        <h3>Deleting Contact</h3>
+
+    <button (click)="deleteArticle('custom-modal-1');">Delete </button>
+    <button (click)="closeModal('custom-modal-1');">Close</button>
+    </div>
+</jw-modal>

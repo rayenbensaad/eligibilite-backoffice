@@ -10,6 +10,11 @@
                             Remove All
                           </button>
                     </div>
+                    <div class="row" style="text-align: center; ">
+                        <i class="fa fa-file-excel-o" (click)="exportAsXLSX()" style="font-size:48px;color:green;cursor: pointer;"></i>
+                        <p style="margin-right: 80px;">Exporter Excel </p>                        
+
+                    </div>
                    
                     <div class="content table-responsive table-full-width">
                         <table class="table table-hover table-striped">
@@ -36,9 +41,14 @@
                                     <td>{{row.email}}</td>
                                     <td>{{row.date_rappel}}</td>
                                     <td >
-                                        <a class="badge badge-warning" routerLink="/detailForm/{{ row.id }}">
-                                            Detail
-                                        </a>
+
+                                        <i class="glyphicon glyphicon-eye-open" style="color: rgb(31, 0, 209);cursor: pointer;" routerLink="/detailForm/{{ row.id }}">
+                                            
+                                        </i>
+                                        
+                                        <i  class='glyphicon glyphicon-trash' style="color: red;cursor: pointer; float: right;" (click)="openModal('custom-modal-1')">
+                                             
+                                        </i>
                                     </td>
                                 </tr>
                             </tbody>
@@ -67,3 +77,20 @@
     </div>
 </div>
 
+
+
+<jw-modal id="custom-modal-1">
+    <div style="justify-content: center;" class="modal-header">
+        <span (click)="closeModal('custom-modal-1');" class="close">X</span>
+
+        <h1 style="color: white;">Are you sure ?</h1>
+    </div>
+   
+   
+    <div class="modal-body">
+        <h3>Deleting Contact</h3>
+
+    <button (click)="deleteForm('custom-modal-1');">Delete </button>
+    <button (click)="closeModal('custom-modal-1');">Close</button>
+    </div>
+</jw-modal>

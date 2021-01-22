@@ -23,10 +23,11 @@
   
     
     </form>
-  
-    <button class="badge badge-danger mr-2" (click)="deleteForm()">
+ 
+    <button class="badge badge-danger mr-2" (click)="openModal('custom-modal-1')">
       Delete
-    </button>
+  </button>
+
 
     <p>{{ message }}</p>
   </div>
@@ -35,3 +36,20 @@
     <br />
     <p>Cannot access this Tutorial...</p>
   </div>
+
+
+  <jw-modal id="custom-modal-1">
+    <div style="justify-content: center;" class="modal-header">
+        <span (click)="closeModal('custom-modal-1');" class="close">X</span>
+
+        <h1 style="color: white;">Are you sure ?</h1>
+    </div>
+   
+   
+    <div class="modal-body">
+        <h3>Deleting Contact</h3>
+
+    <button (click)="deleteForm()">Delete </button>
+    <button (click)="closeModal('custom-modal-1');">Close</button>
+    </div>
+</jw-modal>

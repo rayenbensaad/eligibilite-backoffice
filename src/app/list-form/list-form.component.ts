@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormService } from 'app/service/form.service';
+import { ExcelService } from 'app/service/excel.service';
+import { Router } from '@angular/router';
+import { ModalService } from 'app/_modal';
 
 @Component({
   selector: 'app-list-form',
@@ -12,11 +15,17 @@ export class ListFormComponent implements OnInit {
   currentForm = null;
   currentIndex = -1;
   nom_prenom = '';
-  constructor(private formService: FormService) { }
+  constructor(private formService: FormService,private excelService:ExcelService,
+    private router: Router ,private modalService: ModalService) { }
 
   ngOnInit(): void {
     this.retrieveForms();
   }
+
+  exportAsXLSX():void {
+    this.excelService.exportAsExcelFile(this.forms, 'formulaire_data');
+  }
+
   retrieveForms() {
     this.formService.getAll()
       .subscribe(
@@ -46,10 +55,33 @@ export class ListFormComponent implements OnInit {
         response => {
           console.log(response);
           this.refreshList();
+         
         },
         error => {
           console.log(error);
         });
   }
+
+
+  deleteForm(id: string) {
+    this.formService.delete(this.currentForm.id)
+      .subscribe(
+        response => {
+          console.log(response),
+          this.modalService.close(id),
+          this.retrieveForms()
+        },
+        error => {
+          console.log(error);
+        });
+  }
+
+  openModal(id: string) {
+    this.modalService.open(id);
+}
+
+closeModal(id: string) {
+    this.modalService.close(id);
+}
 
 }

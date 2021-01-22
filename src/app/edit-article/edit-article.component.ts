@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ArticleServiceService } from 'app/service/article-service.service';
+import { ModalService } from 'app/_modal';
 
 @Component({
   selector: 'app-edit-article',
@@ -15,7 +16,8 @@ export class EditArticleComponent implements OnInit {
   constructor(
     private articleService: ArticleServiceService,
     private route: ActivatedRoute,
-    private router: Router) { }
+    private router: Router,
+    private modalService: ModalService) { }
 
     ngOnInit() {
       this.message = '';
@@ -59,4 +61,12 @@ export class EditArticleComponent implements OnInit {
             console.log(error);
           });
     }
+
+  openModal(id: string) {
+      this.modalService.open(id);
+  }
+
+  closeModal(id: string) {
+      this.modalService.close(id);
+  }
   }

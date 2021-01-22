@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormService } from 'app/service/form.service';
+import { ModalService } from 'app/_modal';
 
 @Component({
   selector: 'app-detail-form',
@@ -15,7 +16,8 @@ export class DetailFormComponent implements OnInit {
   constructor(
     private formService: FormService,
     private route: ActivatedRoute,
-    private router: Router) { }
+    private router: Router,
+    private modalService: ModalService) { }
 
     ngOnInit() {
       this.message = '';
@@ -34,15 +36,24 @@ export class DetailFormComponent implements OnInit {
           });
     }
   
-    deleteForm() {
-      this.formService.delete(this.currentForm.id)
-        .subscribe(
-          response => {
-            console.log(response);
-            this.router.navigate(['/listForm']);
-          },
-          error => {
-            console.log(error);
-          });
-    }
+   
+
+    openModal(id: string) {
+      this.modalService.open(id);
+  }
+
+  closeModal(id: string) {
+      this.modalService.close(id);
+  }
+  deleteForm() {
+    this.formService.delete(this.currentForm.id)
+      .subscribe(
+        response => {
+          console.log(response);
+          this.router.navigate(['/listForm']);
+        },
+        error => {
+          console.log(error);
+        });
+  }
   }

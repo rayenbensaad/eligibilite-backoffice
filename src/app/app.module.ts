@@ -20,6 +20,8 @@ import { DetailFormComponent } from './detail-form/detail-form.component';
 import { ListContactComponent } from './list-contact/list-contact.component';
 import { DetailContactComponent } from './detail-contact/detail-contact.component';
 import { ModalModule } from './_modal';
+import { ExcelService } from './service/excel.service';
+
 
 
 @NgModule({
@@ -45,7 +47,7 @@ import { ModalModule } from './_modal';
     ListContactComponent,
     DetailContactComponent
   ],
-  providers: [],
+  providers: [ExcelService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

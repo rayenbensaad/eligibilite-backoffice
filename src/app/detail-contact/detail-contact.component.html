@@ -28,11 +28,18 @@
 
 
     <jw-modal id="custom-modal-1">
-        <h1 style="color: red;">Are you sure ?</h1>
+        <div style="justify-content: center;" class="modal-header">
+            <span (click)="closeModal('custom-modal-1');" class="close">X</span>
+
+            <h1 style="color: white;">Are you sure ?</h1>
+        </div>
        
-        <h5>Deleting Contact</h5>
+       
+        <div class="modal-body">
+            <h3>Deleting Contact</h3>
 
         <button (click)="deleteContact();">Delete </button>
         <button (click)="closeModal('custom-modal-1');">Close</button>
+        </div>
     </jw-modal>
 

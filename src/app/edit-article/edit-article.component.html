@@ -48,9 +48,10 @@
   
 
   
-    <button class="badge badge-danger mr-2" (click)="deleteArticle()">
+    <button class="badge badge-danger mr-2" (click)="openModal('custom-modal-1')">
       Delete
-    </button>
+  </button>
+
   
     <button type="submit" class="badge badge-success" (click)="updateArticle()">
       Update
@@ -62,3 +63,19 @@
     <br />
     <p>Cannot access this Tutorial...</p>
   </div>
+
+  <jw-modal id="custom-modal-1">
+    <div style="justify-content: center;" class="modal-header">
+        <span (click)="closeModal('custom-modal-1');" class="close">X</span>
+
+        <h1 style="color: white;">Are you sure ?</h1>
+    </div>
+   
+   
+    <div class="modal-body">
+        <h3>Deleting Contact</h3>
+
+    <button (click)="deleteArticle()">Delete </button>
+    <button (click)="closeModal('custom-modal-1');">Close</button>
+    </div>
+</jw-modal>
