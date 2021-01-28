@@ -21,6 +21,7 @@ import { ListContactComponent } from './list-contact/list-contact.component';
 import { DetailContactComponent } from './detail-contact/detail-contact.component';
 import { ModalModule } from './_modal';
 import { ExcelService } from './service/excel.service';
+import { LoginComponent } from './login/login.component';
 
 
 
@@ -45,7 +46,8 @@ import { ExcelService } from './service/excel.service';
     ListFormComponent,
     DetailFormComponent,
     ListContactComponent,
-    DetailContactComponent
+    DetailContactComponent,
+    LoginComponent
   ],
   providers: [ExcelService],
   bootstrap: [AppComponent]

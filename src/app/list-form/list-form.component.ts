@@ -15,11 +15,17 @@ export class ListFormComponent implements OnInit {
   currentForm = null;
   currentIndex = -1;
   nom_prenom = '';
+  currentUser;
   constructor(private formService: FormService,private excelService:ExcelService,
     private router: Router ,private modalService: ModalService) { }
 
   ngOnInit(): void {
     this.retrieveForms();
+    let data = JSON.parse(localStorage.getItem("user"));
+    this.currentUser=data;
+    if(this.currentUser ==null){
+      this.router.navigate(['/']);
+    }
   }
 
   exportAsXLSX():void {

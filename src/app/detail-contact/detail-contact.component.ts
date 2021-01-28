@@ -19,9 +19,16 @@ export class DetailContactComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private modalService: ModalService) { }
+    currentUser;
     ngOnInit() {
       this.message = '';
       this.getContact(this.route.snapshot.paramMap.get('id'));
+
+      let data = JSON.parse(localStorage.getItem("user"));
+      this.currentUser=data;
+      if(this.currentUser ==null){
+        this.router.navigate(['/']);
+      }
     }
   
     getContact(id) {

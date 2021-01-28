@@ -18,10 +18,15 @@ export class DetailFormComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private modalService: ModalService) { }
-
+    currentUser;
     ngOnInit() {
       this.message = '';
       this.getForm(this.route.snapshot.paramMap.get('id'));
+      let data = JSON.parse(localStorage.getItem("user"));
+      this.currentUser=data;
+      if(this.currentUser ==null){
+        this.router.navigate(['/']);
+      }
     }
   
     getForm(id) {

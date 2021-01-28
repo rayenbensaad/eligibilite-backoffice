@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 declare const $: any;
 declare interface RouteInfo {
@@ -9,7 +10,7 @@ declare interface RouteInfo {
 }
 export const ROUTES: RouteInfo[] = [
   // { path: '/dashboard', title: 'Dashboard',  icon: 'pe-7s-graph', class: '' },
-   // { path: '/user', title: 'User Profile',  icon:'pe-7s-user', class: '' },
+    { path: '/user', title: 'User Profile',  icon:'pe-7s-user', class: '' },
    // { path: '/table', title: 'Table List',  icon:'pe-7s-note2', class: '' },
    { path: '/listArticle', title: 'List Article',  icon:'pe-7s-note2', class: '' },
     { path: '/addArticle', title: 'Add Article',  icon:'pe-7s-pen', class: '' },
@@ -30,10 +31,16 @@ export const ROUTES: RouteInfo[] = [
 export class SidebarComponent implements OnInit {
   menuItems: any[];
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
     this.menuItems = ROUTES.filter(menuItem => menuItem);
+  }
+
+  logOut(){
+
+    localStorage.clear();
+    this.router.navigate(['/login']);
   }
   isMobileMenu() {
       if ($(window).width() > 991) {

@@ -14,12 +14,18 @@ export class ListArticleComponent implements OnInit {
   currentArticle = null;
   currentIndex = -1;
   subject = '';
+  currentUser;
 
   constructor(private articleService: ArticleServiceService,
     private router: Router ,private modalService: ModalService) { }
 
   ngOnInit(): void {
     this.retrieveArticles();
+    let data = JSON.parse(localStorage.getItem("user"));
+    this.currentUser=data;
+    if(this.currentUser ==null){
+      this.router.navigate(['/']);
+    }
   }
   retrieveArticles() {
     this.articleService.getAll()

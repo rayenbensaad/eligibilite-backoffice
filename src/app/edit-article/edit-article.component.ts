@@ -18,10 +18,16 @@ export class EditArticleComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private modalService: ModalService) { }
+    currentUser;
 
     ngOnInit() {
       this.message = '';
       this.getTutorial(this.route.snapshot.paramMap.get('id'));
+      let data = JSON.parse(localStorage.getItem("user"));
+      this.currentUser=data;
+      if(this.currentUser ==null){
+        this.router.navigate(['/']);
+      }
     }
   
     getTutorial(id) {

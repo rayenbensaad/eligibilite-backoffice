@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ArticleServiceService } from 'app/service/article-service.service';
 
 @Component({
@@ -15,10 +16,16 @@ export class AddArticleComponent implements OnInit {
   };
   selectedFile :File;
   submitted = false;
+  currentUser;
 
-  constructor(private articleService: ArticleServiceService) { }
+  constructor(private articleService: ArticleServiceService,private router: Router) { }
 
   ngOnInit(): void {
+    let data = JSON.parse(localStorage.getItem("user"));
+      this.currentUser=data;
+      if(this.currentUser ==null){
+        this.router.navigate(['/']);
+      }
   }
 
   onFileChanged(event) {

@@ -14,10 +14,16 @@ export class ListContactComponent implements OnInit {
   currentContact = null;
   currentIndex = -1;
   nom_prenom = '';
+  currentUser;
   constructor(private contactService: ContactService,private router: Router ,private modalService: ModalService) { }
 
   ngOnInit(): void {
     this.retrieveContact();
+    let data = JSON.parse(localStorage.getItem("user"));
+    this.currentUser=data;
+    if(this.currentUser ==null){
+      this.router.navigate(['/']);
+    }
   }
   retrieveContact() {
     this.contactService.getAll()
