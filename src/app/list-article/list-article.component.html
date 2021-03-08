@@ -4,9 +4,9 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="header">
-                        <h4 class="title">List of Your Articles</h4>
-                        <p class="category">articles ...</p>
-                        <button style="float: right;" class="m-3 btn btn-sm btn-danger" (click)="removeAllArticles()">
+                        <h4 class="title">Liste des Articles  </h4>
+                        <p class="category"> {{articles.length}} Articles </p>
+                        <button style="float: right;" class="m-3 btn btn-sm btn-danger" (click)="openModal('custom-modal-2')">
                             Remove All
                           </button>
                           <input style="margin-left: 40%;" type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
@@ -14,15 +14,22 @@
                     </div>
                    
                     <div class="content table-responsive table-full-width">
-                        <table id="myTable" class="table table-hover table-striped">
+                        <table id="myTable" class="table table-hover table-striped" width="100%">
+                            <col />  
+                            <col/>  
+                            <col/> 
+                            <col/>
+                            <col />
+                            <col style="width: 10%;"/>  
+                            <col/>  
                             <thead>
                                 <tr>
                                     <th> numero </th>
                                     <th> ID </th>
-                                    <th> author</th>
-                                    <th>subject </th>
-                                    <th>content </th>
-                                    <th> Pict </th>
+                                    <th> auteur</th>
+                                    <th>sujet </th>
+                                    <th >content </th>
+                                    <th> Image </th>
                                     <th> Actions </th>
                                 </tr>
                             </thead>
@@ -33,8 +40,10 @@
                                     <td>{{row.id}}</td>
                                     <td>{{row.author}}</td>
                                     <td>{{row.subject}}</td>
-                                    <td>{{row.content}}</td>
-                                    <td>{{row.picture}}</td>
+                                    <td >{{row.content}}</td>
+                                    <td>
+                                        <img style="width:70%;" src="http://localhost:3000/uploads/{{row.picture}}" />
+                                    </td>
                                     <td >
                                         <i class="glyphicon glyphicon-edit" style="color: rgb(31, 0, 209);cursor: pointer;" routerLink="/editArticle/{{ row.id }}">
                                             
@@ -52,26 +61,9 @@
                 </div>
             </div>
             <div class="col-md-12">
-                <div *ngIf="currentArticle">
-                    <h4>Article :</h4>
-                    <div>
-                        <label><strong>Author:</strong></label> {{ currentArticle.author }}
-                    </div>
-                    <div>
-                        <label><strong>Subject:</strong></label>
-                        {{ currentArticle.subject }}
-                    </div>
-                   
+               
             
-                    <a class="badge badge-warning" routerLink="/editArticle/{{ currentArticle.id }}">
-                        Edit
-                    </a>
-                </div>
-            
-                <div *ngIf="!currentArticle">
-                    <br />
-                    <p>Please click on a Tutorial...</p>
-                </div>
+              
             </div>
         </div>
     </div>
@@ -85,14 +77,34 @@
     <div style="justify-content: center;" class="modal-header">
         <span (click)="closeModal('custom-modal-1');" class="close">X</span>
 
-        <h1 style="color: white;">Are you sure ?</h1>
+        <h3 style="color: white;">Are you sure ?</h3>
     </div>
    
    
     <div class="modal-body">
-        <h3>Deleting Contact</h3>
+        <h6>Deleting Contact</h6>
 
-    <button (click)="deleteArticle('custom-modal-1');">Delete </button>
-    <button (click)="closeModal('custom-modal-1');">Close</button>
+    <button style="background-color: white; margin-right: 10px;" class="btn btn-sm ml-5"  (click)="deleteArticle('custom-modal-1');">Delete </button>
+    <button style="background-color: white;" class="btn btn-sm ml-5"  (click)="closeModal('custom-modal-1');">Close</button>
     </div>
+</jw-modal>
+
+
+
+<jw-modal id="custom-modal-2">
+    <div style="justify-content: center;" class="modal-header">
+        <span (click)="closeModal('custom-modal-2');" class="close">X</span>
+
+        <h3 style="color: white;">Êtes-vous sûr ?</h3>
+    </div>
+   
+   
+    <div class="modal-body">
+        <h6>Suppression</h6>
+
+    <button style="background-color: white; margin-right: 10px;" class="btn btn-sm ml-5"  (click)="removeAllContacts('custom-modal-2')">Supprimer </button>
+    <button style="background-color: white;" class="btn btn-sm ml-5"  (click)="closeModal('custom-modal-2');">Fermer</button>
+    
+    
+</div>
 </jw-modal>

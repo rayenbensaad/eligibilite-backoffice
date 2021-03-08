@@ -5,6 +5,12 @@ display: none;
 width: 100%; /* Full width */
 height: 100%; /* Full height */
   }
+
+  .modal-header {
+    padding: 0;
+}
+
+
   
   /* Modal Content */
   .modal-content {
@@ -34,12 +40,7 @@ height: 100%; /* Full height */
     cursor: pointer;
   }
   
-  .modal-header {
-    background-color: #aa0000;
-    color: white;
-    height: 50%;
-    width: 100%;
-  }
+
   
   .modal-body {
       height: 100px;
@@ -61,3 +62,12 @@ height: 100%; /* Full height */
     text-decoration: none;
     cursor: pointer;
   }
+  .form-group {
+    margin-top: 30px;
+    margin-left: 30px;
+    margin-right: 50px;
+}
+.btn-danger {
+
+  margin-left: 30px;
+}

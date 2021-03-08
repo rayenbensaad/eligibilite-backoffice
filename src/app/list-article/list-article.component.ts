@@ -50,11 +50,12 @@ export class ListArticleComponent implements OnInit {
     this.currentIndex = index;
   }
 
-  removeAllArticles() {
+  removeAllArticles(id: string) {
     this.articleService.deleteAll()
       .subscribe(
         response => {
           console.log(response);
+          this.modalService.close(id);
           this.refreshList();
         },
         error => {

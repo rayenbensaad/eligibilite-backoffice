@@ -1,55 +1,174 @@
 <div *ngIf="currentForm" class="edit-form">
-    <h4>Tutorial</h4>
+    <h4 style="margin-left: 30px;">Information Personnelle: </h4>
     <form>
-      <div class="form-group">
-        <label for="nom_prenom">nom_prenom</label>
-        <input
-          type="text"
-          class="form-control"
-          [(ngModel)]="currentForm.nom_prenom"
-          name="nom_prenom"
-        />
-      </div>
-      <div class="form-group">
-        <label for="email">email</label>
-        <input
-          type="text"
-          class="form-control"
-          id="email"
-          [(ngModel)]="currentForm.email"
-          name="email"
-        />
-      </div>
-  
+      <div style="border: 2px #014979 solid; margin: 50px;">
+
+        <div class="form-group">
+          <label  for="nom_prenom">Nom & Prénom: </label>
+          <p> {{currentForm.nom_prenom}} </p>
+       
+          
+        </div>
+        <div class="form-group">
+          <label for="email">E-mail:</label>
+          <p> {{currentForm.email}} </p>
+     
+        </div>
     
+        <div class="form-group">
+          <label for="numTel">Numéro Téléphone:</label>
+          <p> {{currentForm.numTel}} </p>
+     
+        </div>
+        <div class="form-group">
+          <label for="code_postale">Code Postal::</label>
+          <p> {{currentForm.code_postale}} </p>
+     
+        </div>
+        <div class="form-group">
+          <label for="commune">Commune:</label>
+          <p> {{currentForm.commune}} </p>
+     
+        </div>
+
+      </div>
+     
+
+      <h4 style="margin-left: 30px;">Information d'eligibilite:</h4>
+
+      
+
+      <div style="border: 2px #014979 solid; margin: 50px;">
+
+        <div class="form-group">
+          <label  for="logement">Logement:</label>
+          <p> {{currentForm.logement}} </p>
+        </div>
+  
+        <div class="form-group">
+          <label for="energie_chauffage">Mode de Chauffage::</label>
+          <p> {{currentForm.energie_chauffage}} </p>
+        </div>
+  
+        <div class="form-group">
+          <label for="isole">type d'isolation:</label>
+          <p> {{currentForm.isole}} </p>
+        </div>
+  
+        <div class="form-group">
+          <label  for="surface_ITE">Surface ITE-Isolation thermique extérieur:</label>
+          <p> {{currentForm.surface_ITE}} </p>
+        </div>
+  
+        <div class="form-group">
+          <label for="surface_ITI">Surface ITI-isolation theremique intérieur:</label>
+          <p> {{currentForm.surface_ITI}} </p>
+        </div>
+  
+        <div *ngIf='currentForm.surface_PAC!=""'  class="form-group">
+         
+           <label > PAC-pompe à chaleur: </label> 
+          
+           <div style="border: 1px #169331 solid; padding: 10px;">
+            <div style=" display:inline" for="surface_PAC"> Surface:</div>
+            <p *ngIf='currentForm.surface_PAC!=null else elseBlockSurface'> {{currentForm.surface_PAC}} </p>
+            <ng-template #elseBlockSurface>  ----------------------------------------------------- </ng-template>
+            <br>
+            <div style=" display:inline"  for="nombre_pieces_PAC"> Nombre de pieces:</div>
+            <p *ngIf='currentForm.nombre_pieces_PAC!=0 else elseBlocknbrePAC'> {{currentForm.nombre_pieces_PAC}} </p>
+            <ng-template #elseBlocknbrePAC>  ----------------------------------------------------- </ng-template>
+
+           </div>
+          
+         
+        </div>
+  
+     
+
+        <div *ngIf='currentForm.combles!="" '   class="form-group">
+         
+          <label > PAC-pompe à chaleur: </label> 
+         
+          <div style="border: 1px #169331 solid; padding: 10px;">
+           <div style=" display:inline"> Aménagé:</div>
+           <p *ngIf='currentForm.surface_PAC!=null else elseBlockSurface'> {{currentForm.combles}} </p>
+           <ng-template #elseBlockSurface>  ----------------------------------------------------- </ng-template>
+           <br>
+           <div style=" display:inline" > Surface:</div>
+           <p *ngIf='currentForm.nombre_pieces_PAC!=0 else elseBlocknbrePAC'> {{currentForm.surface_combles}} </p>
+           <ng-template #elseBlocknbrePAC>  ----------------------------------------------------- </ng-template>
+
+          </div>
+         
+        
+       </div>
+  
+        <div *ngIf='currentForm.surface_cave!=null ' class="form-group">
+          <label for="surface_cave">Surface cave/ sous sol:</label>
+          <p> {{currentForm.surface_cave}} </p>
+        </div>
+  
+        <div *ngIf="currentForm.surface_garage!==null  " class="form-group">
+          <label for="surface_garage">Surface Garage:</label>
+          <p> {{currentForm.surface_garage}} </p>
+        </div>
+  
+      
+        <div  *ngIf=' currentForm.surface_vide_sanitaire != "" ' class="form-group">
+          <div>
+            Vide Sanitaire 
+          </div>
+          <label for="surface_vide_sanitaire"> Surface :</label>
+          <p> {{currentForm.surface_vide_sanitaire}} </p>
+          <br>
+          <label for="hauteur_vide_sanitaire"> Hauteur:</label>
+          <p> {{currentForm.hauteur_vide_sanitaire}} </p>
+         
+        </div>
+  
+  
+        <div  class="form-group">
+          <label for="lieu_maison">Lieu de maison:</label>
+          <p> {{currentForm.lieu_maison}} </p>
+        </div>
+  
+        <div class="form-group">
+          <label for="nbr_personne">Nombre de personnes:</label>
+          <p> {{currentForm.nbr_personne}} </p>
+        </div>
+  
+        <div class="form-group">
+          <label for="revenu_annuel">Revenu Annuel:</label>
+          <p> {{currentForm.revenu_annuel}} </p>
+        </div>
+
+      </div>
+     
     </form>
  
-    <button class="badge badge-danger mr-2" (click)="openModal('custom-modal-1')">
+    <button class="btn btn-danger" (click)="openModal('custom-modal-1')">
       Delete
   </button>
 
 
-    <p>{{ message }}</p>
+   
   </div>
   
-  <div *ngIf="!currentArticle">
-    <br />
-    <p>Cannot access this Tutorial...</p>
-  </div>
+
 
 
   <jw-modal id="custom-modal-1">
     <div style="justify-content: center;" class="modal-header">
         <span (click)="closeModal('custom-modal-1');" class="close">X</span>
 
-        <h1 style="color: white;">Are you sure ?</h1>
+        <h3 style="color: white;">Êtes-vous sûr ?</h3>
     </div>
    
    
     <div class="modal-body">
-        <h3>Deleting Contact</h3>
+        <h6>Suppression </h6>
 
-    <button (click)="deleteForm()">Delete </button>
-    <button (click)="closeModal('custom-modal-1');">Close</button>
+    <button style="background-color: white; margin-right: 10px;" class="btn btn-sm ml-5" (click)="deleteForm()">Supprimer </button>
+    <button style="background-color: white;" class="btn btn-sm ml-5" (click)="closeModal('custom-modal-1');">Fermer</button>
     </div>
 </jw-modal>

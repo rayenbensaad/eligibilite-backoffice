@@ -7,7 +7,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#" >{{getTitle()}}</a>
+            <a  onclick='return false;' class="navbar-brand" href="#" >{{getTitle()}}</a>
         </div>
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav navbar-left">
@@ -17,7 +17,7 @@
                         <p class="hidden-lg hidden-md">{{getTitle()}}</p>
                     </a>
                 </li>
-                <li class="dropdown">
+                <!-- <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <i class="fa fa-globe"></i>
                         <b class="caret"></b>
@@ -34,22 +34,22 @@
                         <li><a href="#">Notification 4</a></li>
                         <li><a href="#">Another notification</a></li>
                     </ul>
-                </li>
-                <li>
+                </li> -->
+                <!-- <li>
                     <a href="#">
                         <i class="fa fa-search"></i>
                         <p class="hidden-lg hidden-md">Search</p>
                     </a>
-                </li>
+                </li> -->
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
                 <li>
                     <a routerLink="/user">
-                        Account
+                        Compte
                     </a>
                 </li>
-                <li class="dropdown">
+                <!-- <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
 
                             Dropdown
@@ -65,10 +65,10 @@
                         <li class="divider"></li>
                         <li><a href="#">Separated link</a></li>
                     </ul>
-                </li>
+                </li> -->
                 <li>
                     <a (click)='logOut()' href="#">
-                        Log out
+                        Se déconnecter
                     </a>
                 </li>
                 <li class="separator hidden-lg hidden-md"></li>

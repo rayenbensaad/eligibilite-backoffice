@@ -3,6 +3,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ContactService } from 'app/service/contact.service';
 import { ModalService } from 'app/_modal';
 
+
+declare var $:any;
+
 @Component({
   selector: 'app-detail-contact',
   templateUrl: './detail-contact.component.html',
@@ -62,4 +65,7 @@ export class DetailContactComponent implements OnInit {
             console.log(error);
           });
     }
+    
   }
+
+  

@@ -4,6 +4,7 @@ import { ExcelService } from 'app/service/excel.service';
 import { Router } from '@angular/router';
 import { ModalService } from 'app/_modal';
 
+
 @Component({
   selector: 'app-list-form',
   templateUrl: './list-form.component.html',
@@ -55,13 +56,13 @@ export class ListFormComponent implements OnInit {
     this.currentIndex = index;
   }
 
-  removeAllForms() {
+  removeAllForms(id: string) {
     this.formService.deleteAll()
       .subscribe(
         response => {
           console.log(response);
           this.refreshList();
-         
+          this.modalService.close(id);
         },
         error => {
           console.log(error);

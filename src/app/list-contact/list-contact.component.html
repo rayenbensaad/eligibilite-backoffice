@@ -5,8 +5,8 @@
                 <div class="card">
                     <div class="header">
                         <h4 class="title">Reponses de formulaire</h4>
-                        <p class="category">articles ...</p>
-                        <button style="float: right;" class="m-3 btn btn-sm btn-danger" (click)="removeAllContact()">
+                        <p class="category"> {{contacts.length}} Contacts </p>
+                        <button style="float: right;" class="m-3 btn btn-sm btn-danger" (click)="openModal('custom-modal-2')">
                             Remove All
                           </button>
                           <input style="margin-left: 40%;" type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
@@ -23,7 +23,7 @@
                                     <th> ID </th>
                                     <th> nom & prenom</th>
                                     <th> email </th>
-                                    <th> subject </th>
+                                    <th> sujet </th>
                                     <th> message </th>
                                     <th> actions </th>
                                 </tr>
@@ -55,19 +55,7 @@
                 </div>
             </div>
             <div class="col-md-12">
-                <div *ngIf="currentContact">
-                    <h4>Article :</h4>
-                    <div>
-                        <label><strong>Nom et prenom :</strong></label> {{ currentContact.nom_prenom }}
-                    </div>
-                    <div>
-                        <label><strong>Email:</strong></label>
-                        {{ currentContact.email }}
-                    </div>
-                   
-             
-                </div>
-            
+        
              
             </div>
         </div>
@@ -80,14 +68,33 @@
     <div style="justify-content: center;" class="modal-header">
         <span (click)="closeModal('custom-modal-1');" class="close">X</span>
 
-        <h1 style="color: white;">Are you sure ?</h1>
+        <h3 style="color: white;">Êtes-vous sûr ?</h3>
     </div>
    
    
     <div class="modal-body">
-        <h3>Deleting Contact</h3>
+        <h6>Suppression Contact</h6>
 
-    <button (click)="deleteContact('custom-modal-1');">Delete </button>
-    <button (click)="closeModal('custom-modal-1');">Close</button>
+    <button style="background-color: white; margin-right: 10px;" class="btn btn-sm ml-5"  (click)="deleteContact('custom-modal-1');">Supprimer </button>
+    <button style="background-color: white;" class="btn btn-sm ml-5 "  (click)="closeModal('custom-modal-1');">Fermer</button>
     </div>
+</jw-modal>
+
+
+<jw-modal id="custom-modal-2">
+    <div style="justify-content: center;" class="modal-header">
+        <span (click)="closeModal('custom-modal-2');" class="close">X</span>
+
+        <h3 style="color: white;">Êtes-vous sûr ?</h3>
+    </div>
+   
+   
+    <div class="modal-body">
+        <h6>Suppression</h6>
+
+    <button style="background-color: white; margin-right: 10px;" class="btn btn-sm ml-5"  (click)="removeAllContacts('custom-modal-2')">Supprimer </button>
+    <button style="background-color: white;" class="btn btn-sm ml-5"  (click)="closeModal('custom-modal-2');">Fermer</button>
+    
+    
+</div>
 </jw-modal>

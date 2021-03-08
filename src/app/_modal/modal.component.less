@@ -12,8 +12,7 @@ jw-modal {
         bottom: 0;
         margin-left: 300px;
        
-        width: 60%; /* Full width */
-        height: 100%; /* Full height */
+        width: 30%; /* Full width */
    
         /* z-index must be higher than .jw-modal-background */
         z-index: 1000;
@@ -55,3 +54,12 @@ body.jw-modal-open {
     overflow: hidden;
 }
 
+
+@media (max-width: 716px){
+    .jw-modal {
+        position: absolute !important;
+        margin-left: 100px !important;
+        width: auto !important;
+    }
+  
+  }

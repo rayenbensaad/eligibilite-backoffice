@@ -5,8 +5,8 @@
                 <div class="card">
                     <div class="header">
                         <h4 class="title">Reponses de formulaire</h4>
-                        <p class="category">articles ...</p>
-                        <button style="float: right;" class="m-3 btn btn-sm btn-danger" (click)="removeAllForms()">
+                        <p class="category"> {{forms.length}} Reponses </p>
+                        <button style="float: right;" class="m-3 btn btn-sm btn-danger" (click)="openModal('custom-modal-2')">
                             Remove All
                           </button>
 
@@ -25,12 +25,10 @@
                             <thead>
                                 <tr>
                                     <th> numero </th>
-                                    <th> ID </th>
                                     <th> nom & prenom</th>
-                                    <th>code postale </th>
+                                    <th> code postal </th>
                                     <th>numero Telephone </th>
                                     <th> email </th>
-                                    <th> date rappel </th>
                                     <th> actions </th>
                                 </tr>
                             </thead>
@@ -38,12 +36,10 @@
                                 <tr *ngFor="let row of forms; let i=index;"
                                 [class.active]="i == currentIndex" (mouseenter)="setActiveForm(row, i)">
                                     <td> {{i +1}} </td>
-                                    <td>{{row.id}}</td>
                                     <td>{{row.nom_prenom}}</td>
-                                    <td>{{row.code_postal}}</td>
+                                    <td>{{row.code_postale}}</td>
                                     <td>{{row.num_tel}}</td>
                                     <td>{{row.email}}</td>
-                                    <td>{{row.date_rappel}}</td>
                                     <td >
 
                                         <i class="glyphicon glyphicon-eye-open" style="color: rgb(31, 0, 209);cursor: pointer;" routerLink="/detailForm/{{ row.id }}">
@@ -62,20 +58,7 @@
                 </div>
             </div>
             <div class="col-md-12">
-                <div *ngIf="currentForm">
-                    <h4>Article :</h4>
-                    <div>
-                        <label><strong>Nom et prenom :</strong></label> {{ currentForm.nom_prenom }}
-                    </div>
-                    <div>
-                        <label><strong>Email:</strong></label>
-                        {{ currentForm.email }}
-                    </div>
-                   
-             
-                </div>
             
-             
             </div>
         </div>
     </div>
@@ -87,14 +70,36 @@
     <div style="justify-content: center;" class="modal-header">
         <span (click)="closeModal('custom-modal-1');" class="close">X</span>
 
-        <h1 style="color: white;">Are you sure ?</h1>
+        <h3 style="color: white;">Êtes-vous sûr ?</h3>
     </div>
    
    
     <div class="modal-body">
-        <h3>Deleting Contact</h3>
+        <h6>Suppression</h6>
 
-    <button (click)="deleteForm('custom-modal-1');">Delete </button>
-    <button (click)="closeModal('custom-modal-1');">Close</button>
-    </div>
+    <button style="background-color: white; margin-right: 10px;" class="btn btn-sm ml-5"  (click)="deleteForm('custom-modal-1');">Supprimer </button>
+    <button style="background-color: white;" class="btn btn-sm ml-5"  (click)="closeModal('custom-modal-1');">Fermer</button>
+    
+    
+</div>
 </jw-modal>
+
+
+<jw-modal id="custom-modal-2">
+    <div style="justify-content: center;" class="modal-header">
+        <span (click)="closeModal('custom-modal-2');" class="close">X</span>
+
+        <h3 style="color: white;">Êtes-vous sûr ?</h3>
+    </div>
+   
+   
+    <div class="modal-body">
+        <h6>Suppression</h6>
+
+    <button style="background-color: white; margin-right: 10px;" class="btn btn-sm ml-5"  (click)="removeAllForms('custom-modal-2')">Supprimer </button>
+    <button style="background-color: white;" class="btn btn-sm ml-5"  (click)="closeModal('custom-modal-2');">Fermer</button>
+    
+    
+</div>
+</jw-modal>
+

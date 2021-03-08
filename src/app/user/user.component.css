@@ -35,11 +35,8 @@
       }
       
       .modal-header {
-        background-color: #aa0000;
-        color: white;
-        height: 50%;
-        width: 100%;
-      }
+        padding: 0;
+    }
       
       .modal-body {
           height: 100px;

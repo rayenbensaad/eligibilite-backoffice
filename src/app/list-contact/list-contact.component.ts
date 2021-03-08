@@ -48,11 +48,13 @@ export class ListContactComponent implements OnInit {
     this.currentIndex = index;
   }
 
-  removeAllContacts() {
+  removeAllContacts(id: string) {
     this.contactService.deleteAll()
       .subscribe(
         response => {
           console.log(response);
+          this.modalService.close(id);
+
           this.refreshList();
         },
         error => {
