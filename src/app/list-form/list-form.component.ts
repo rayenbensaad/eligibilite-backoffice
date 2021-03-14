@@ -3,6 +3,8 @@ import { FormService } from 'app/service/form.service';
 import { ExcelService } from 'app/service/excel.service';
 import { Router } from '@angular/router';
 import { ModalService } from 'app/_modal';
+import jsPDF from 'jspdf';
+import * as _html2canvas from "html2canvas";
 
 
 @Component({
@@ -11,6 +13,7 @@ import { ModalService } from 'app/_modal';
   styleUrls: ['./list-form.component.css']
 })
 export class ListFormComponent implements OnInit {
+   html2canvas: any = _html2canvas;
 
   forms: any;
   currentForm = null;
@@ -33,6 +36,22 @@ export class ListFormComponent implements OnInit {
     this.excelService.exportAsExcelFile(this.forms, 'formulaire_data');
   }
 
+  public openPDF():void {
+    let DATA = document.getElementById('htmlData');
+        
+    this.html2canvas(DATA).then(canvas => {
+        
+        let fileWidth = 208;
+        let fileHeight = canvas.height * fileWidth / canvas.width;
+        
+        const FILEURI = canvas.toDataURL('image/png')
+        let PDF = new jsPDF('p', 'mm', 'a4');
+        let position = 0;
+        PDF.addImage(FILEURI, 'PNG', 0, position, fileWidth, fileHeight)
+        
+        PDF.save('tableau_formulaires.pdf');
+    });     
+    }
   retrieveForms() {
     this.formService.getAll()
       .subscribe(

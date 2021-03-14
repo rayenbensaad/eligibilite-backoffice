@@ -1,0 +1,20 @@
+.copyright{
+    right: -400px; 
+    position: relative;
+}
+
+@media (max-width: 759px){
+    .copyright{
+        right: -200px; 
+        position: relative;
+    }
+
+  }
+
+  @media (max-width: 500px){
+    .copyright{
+        right: 0; 
+        position: relative;
+    }
+
+  }

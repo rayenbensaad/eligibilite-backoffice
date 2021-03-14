@@ -16,8 +16,9 @@ export const ROUTES: RouteInfo[] = [
     { path: '/addArticle', title: 'Ajouter un Article',  icon:'pe-7s-pen', class: '' },
    
     //{ path: '/typography', title: 'Typography',  icon:'pe-7s-news-paper', class: '' },
-    { path: '/listForm', title: 'Liste des reponses',  icon:'pe-7s-bookmarks', class: '' },
+    { path: '/listForm', title: 'Liste des réponses',  icon:'pe-7s-bookmarks', class: '' },
     { path: '/listContact', title: 'Contacts',  icon:'pe-7s-id', class: '' },
+    { path: '/newsletters', title: 'Newsletters',  icon:'pe-7s-id', class: '' },
     //{ path: '/icons', title: 'Icons',  icon:'pe-7s-science', class: '' },
    // { path: '/maps', title: 'Maps',  icon:'pe-7s-map-marker', class: '' },
    // { path: '/notifications', title: 'Notifications',  icon:'pe-7s-bell', class: '' },

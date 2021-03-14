@@ -4,13 +4,13 @@
   
       <!-- Icon -->
       <div class="fadeIn first">
-        <img src="http://danielzawadzki.com/codepen/01/icon.svg" id="icon" alt="User Icon" />
+        <img src="assets/img/LogoARE.jpg" width="50" height="60"  alt="User Icon" />
       </div>
   
       <!-- Login Form -->
       <form>
         <input type="text" id="login" class="fadeIn second"  [(ngModel)]="user.username" name="username" placeholder="login" required>
-        <input type="text" id="password" class="fadeIn third" [(ngModel)]="user.password" name="password" placeholder="password" required>
+        <input type="password" id="password" class="fadeIn third" [(ngModel)]="user.password" name="password" placeholder="password" required>
         <input  (click)="login()" type="submit" class="fadeIn fourth" value="Log In">
       </form>
   

@@ -32,6 +32,7 @@ export class LoginComponent implements OnInit {
 
     };
 
+    console.log(data);
     this.authService.login(data)
       .subscribe(
         response => {

@@ -26,4 +26,8 @@ export class ContactService {
   deleteAll() {
     return this.http.delete(baseUrl);
   }
+
+  getAllNewsletter() {
+    return this.http.get('http://152.228.130.141:8000/newsletters');
+  }
 }

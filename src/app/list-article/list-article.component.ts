@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ArticleServiceService } from 'app/service/article-service.service';
+import { ExcelService } from 'app/service/excel.service';
 import { ModalService } from 'app/_modal';
+import jsPDF from 'jspdf';
+import * as _html2canvas from "html2canvas";
 
 @Component({
   selector: 'app-list-article',
@@ -9,6 +12,7 @@ import { ModalService } from 'app/_modal';
   styleUrls: ['./list-article.component.css']
 })
 export class ListArticleComponent implements OnInit {
+  html2canvas: any = _html2canvas;
 
   articles: any;
   currentArticle = null;
@@ -17,7 +21,7 @@ export class ListArticleComponent implements OnInit {
   currentUser;
 
   constructor(private articleService: ArticleServiceService,
-    private router: Router ,private modalService: ModalService) { }
+    private router: Router ,private modalService: ModalService,private excelService:ExcelService) { }
 
   ngOnInit(): void {
     this.retrieveArticles();
@@ -39,6 +43,22 @@ export class ListArticleComponent implements OnInit {
         });
   }
 
+  public openPDF():void {
+    let DATA = document.getElementById('htmlData');
+        
+    this.html2canvas(DATA).then(canvas => {
+        
+        let fileWidth = 208;
+        let fileHeight = canvas.height * fileWidth / canvas.width;
+        
+        const FILEURI = canvas.toDataURL('image/png')
+        let PDF = new jsPDF('p', 'mm', 'a4');
+        let position = 0;
+        PDF.addImage(FILEURI, 'PNG', 0, position, fileWidth, fileHeight)
+        
+        PDF.save('tableau_articles.pdf');
+    });     
+    }
   refreshList() {
     this.retrieveArticles();
     this.currentArticle = null;
@@ -48,6 +68,10 @@ export class ListArticleComponent implements OnInit {
   setActiveArticle(article, index) {
     this.currentArticle = article;
     this.currentIndex = index;
+  }
+
+  exportAsXLSX():void {
+    this.excelService.exportAsExcelFile(this.articles, 'articles_data');
   }
 
   removeAllArticles(id: string) {

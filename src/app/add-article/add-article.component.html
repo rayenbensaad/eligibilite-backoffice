@@ -1,5 +1,5 @@
 <div class="submit-form">
-    <div *ngIf="!submitted">
+    <form #form="ngForm" *ngIf="!submitted">
       <div class="form-group">
         <label for="author">Auteur</label>
         <input
@@ -9,8 +9,14 @@
           required
           [(ngModel)]="post.author"
           name="author"
+          #author="ngModel"
         />
       </div>
+      <div  style="color:red" *ngIf="author.errors && (author.dirty || author.touched)">
+        <p style="margin-left: 30px;"  *ngIf="author.errors.required">
+            * Auteur est obligatoire
+        </p>
+    </div>
 
       <div class="form-group">
         <label for="author">Sujet</label>
@@ -21,8 +27,14 @@
           required
           [(ngModel)]="post.subject"
           name="subject"
+          #subject="ngModel"
         />
       </div>
+      <div   style="color:red" *ngIf="subject.errors && (subject.dirty || subject.touched)">
+        <p style="margin-left: 30px;" *ngIf="subject.errors.required">
+            * Sujet est obligatoire
+        </p>
+    </div>
   
       <div class="form-group">
         <label for="content">Contenu</label>
@@ -32,8 +44,15 @@
           required
           [(ngModel)]="post.content"
           name="content"
+          #content="ngModel"
         />
       </div>
+
+      <div   style="color:red" *ngIf="content.errors && (content.dirty || content.touched)">
+        <p style="margin-left: 30px;" *ngIf="content.errors.required">
+            * Contenu est obligatoire
+        </p>
+    </div>
 
       <div class="form-group">
         <label for="content">Image</label>
@@ -48,8 +67,8 @@
         />
       </div>
   
-      <button (click)="saveArticle()" class="btn btn-success">Soumettre</button>
-    </div>
+      <button [disabled]="!form.valid" (click)="saveArticle()" class="btn btn-success">Soumettre</button>
+    </form>
   
     <div *ngIf="submitted">
       <h4>Vous avez soumis avec succès!</h4>

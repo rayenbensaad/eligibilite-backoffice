@@ -12,6 +12,7 @@ import { ListFormComponent } from 'app/list-form/list-form.component';
 import { DetailFormComponent } from 'app/detail-form/detail-form.component';
 import { ListContactComponent } from 'app/list-contact/list-contact.component';
 import { DetailContactComponent } from 'app/detail-contact/detail-contact.component';
+import { NewsletterComponent } from 'app/newsletter/newsletter.component';
 
 export const AdminLayoutRoutes: Routes = [
   //  { path: 'dashboard',      component: HomeComponent },
@@ -26,5 +27,6 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'detailForm/:id',     component: DetailFormComponent },
     { path: 'listContact',     component: ListContactComponent },
     { path: 'detailContact/:id',     component: DetailContactComponent },
+    { path: 'newsletters',     component: NewsletterComponent },
 
 ];
