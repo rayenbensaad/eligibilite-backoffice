@@ -49,7 +49,7 @@ export class EditArticleComponent implements OnInit {
         .subscribe(
           response => {
             console.log(response);
-            this.message = 'The tutorial was updated successfully!';
+            this.router.navigate(['/listArticle']);
           },
           error => {
             console.log(error);
