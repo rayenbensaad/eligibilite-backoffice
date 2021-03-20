@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from 'app/service/auth.service';
 
 @Component({
@@ -15,13 +16,15 @@ export class UserComponent implements OnInit {
   };
   confirmPassword = '';
   showNewPasswordInput = false;
-  constructor(private authService: AuthService) { }
+  showNewPasswordInput2 = false;
+  constructor(private authService: AuthService,private router: Router) { }
 
   currentUser;
   ngOnInit() {
     let data = JSON.parse(localStorage.getItem("user"));
     this.currentUser = data;
-    //console.log(this.currentUser.user)
+    this.user.email=this.currentUser.user.email;
+    console.log(this.currentUser.user)
   }
 
 
@@ -36,10 +39,8 @@ export class UserComponent implements OnInit {
     this.authService.update(this.currentUser.user.id, data)
       .subscribe(
         response => {
-         // console.log(response);
-
-          //console.log(data);
-          this.showNewPasswordInput = false;
+          localStorage.clear();
+          this.router.navigate(['/login']);
         },
         error => {
           console.log(error);
@@ -60,6 +61,36 @@ export class UserComponent implements OnInit {
 
   cancel() {
     this.showNewPasswordInput = false;
+  }
+
+  showInput2(password) {
+
+    console.log(password);
+    this.showNewPasswordInput2 = true;
+  }
+  cancel2() {
+    this.showNewPasswordInput2 = false;
+  }
+
+  updateEmail(confirmPassword) {
+
+    console.log(confirmPassword);
+    console.log(this.user.email);
+
+    const data = {
+      password: confirmPassword,
+      email: this.user.email,
+    }
+    console.log(data)
+    this.authService.updateEmail(this.currentUser.user.id, data)
+      .subscribe(
+        response => {
+          localStorage.clear();
+          this.router.navigate(['/login']);
+        },
+        error => {
+          console.log(error);
+        });
   }
 
 }

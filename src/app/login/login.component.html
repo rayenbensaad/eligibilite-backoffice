@@ -1,4 +1,4 @@
-<div class="wrapper fadeInDown">
+<div *ngIf='!btnForgetPswd' class="wrapper fadeInDown">
     <div id="formContent">
       <!-- Tabs Titles -->
   
@@ -16,7 +16,34 @@
   
       <!-- Remind Passowrd -->
       <div id="formFooter">
-        <a class="underlineHover" href="#">Forgot Password?</a>
+        <a class="underlineHover" (click)="forgetPassword()" href="#">Forgot Password?</a>
+      </div>
+  
+    </div>
+  </div>
+
+
+
+  <div *ngIf='btnForgetPswd' class="wrapper fadeInDown">
+    <div id="formContent">
+      <!-- Tabs Titles -->
+  
+      <!-- Icon -->
+      <div class="fadeIn first">
+        <img src="assets/img/LogoARE.jpg" width="50" height="60"  alt="User Icon" />
+      </div>
+  
+      <form >
+        <input type="text" id="forget" class="fadeIn second"  [(ngModel)]="user.email" name="email" placeholder="Email" required>
+        <input  (click)="envoyer()" type="submit" class="fadeIn fourth" value="Envoyer">
+      <div style="color: red;">
+        {{ submitEmail}}
+      </div>
+      </form>
+
+  
+      <div id="formFooter">
+        <a (click)="annuler()" class="underlineHover" href="#">Annuler</a>
       </div>
   
     </div>

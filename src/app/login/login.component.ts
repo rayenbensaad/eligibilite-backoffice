@@ -15,17 +15,19 @@ export class LoginComponent implements OnInit {
   user = {
     username: '',
     password: '',
+    email:'',
   };
   submitted = false;
-
+  submitEmail = '';
+  btnForgetPswd = false;
 
   ngOnInit(): void {
   }
 
 
   login() {
-    
-    
+
+
     const data = {
       username: this.user.username,
       password: this.user.password,
@@ -45,6 +47,34 @@ export class LoginComponent implements OnInit {
         },
         error => {
           console.log(error);
+        });
+  }
+
+
+  forgetPassword() {
+    this.btnForgetPswd = true;
+  }
+
+  annuler(){
+    this.btnForgetPswd = false;
+  }
+
+  envoyer(){
+    
+    const data = {
+      email: this.user.email,
+    };
+
+    console.log(data);
+    this.authService.forgetPassword(data)
+      .subscribe(
+        response => { 
+          this.btnForgetPswd = false;
+        },
+        error => {
+          console.log(error);
+          this.submitEmail= "Email n'est pas valide";
+
         });
   }
 }

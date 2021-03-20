@@ -22,4 +22,7 @@ export class AuthService {
     return this.http.post(`http://localhost:3000/forgetPasword/`, data);
   }
 
+  updateEmail(id,data): Observable<any> {
+    return this.http.post(`http://127.0.0.1:3000/UpdateEmail/${id}`, data);
+  }
 }
