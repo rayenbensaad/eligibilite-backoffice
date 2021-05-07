@@ -11,18 +11,18 @@ export class AuthService {
   constructor(private http: HttpClient) { }
 
   login(data): Observable<any> {
-    return this.http.post('http://localhost:3000/signin', data);
+    return this.http.post('https://backend.assistantrenovationenergie.fr/signin', data);
   }
 
   update(id, data) {
-    return this.http.put(`http://localhost:3000/auth/${id}`, data);
+    return this.http.put(`https://backend.assistantrenovationenergie.fr/auth/${id}`, data);
   }
 
   forgetPassword(data): Observable<any> {
-    return this.http.post(`http://localhost:3000/forgetPasword/`, data);
+    return this.http.post(`https://backend.assistantrenovationenergie.fr/forgetPasword/`, data);
   }
 
   updateEmail(id,data): Observable<any> {
-    return this.http.post(`http://127.0.0.1:3000/UpdateEmail/${id}`, data);
+    return this.http.post(`https://backend.assistantrenovationenergie.fr/UpdateEmail/${id}`, data);
   }
 }

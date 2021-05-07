@@ -36,10 +36,10 @@ export class ListArticleComponent implements OnInit {
       .subscribe(
         data => {
           this.articles = data;
-          console.log(data);
+         // console.log(data);
         },
         error => {
-          console.log(error);
+         // console.log(error);
         });
   }
 
@@ -78,27 +78,27 @@ export class ListArticleComponent implements OnInit {
     this.articleService.deleteAll()
       .subscribe(
         response => {
-          console.log(response);
+          //console.log(response);
           this.modalService.close(id);
           this.refreshList();
         },
         error => {
-          console.log(error);
+          //console.log(error);
         });
   }
 
 
   deleteArticle(id: string) {
-    console.log(this.currentArticle.id)
+    //console.log(this.currentArticle.id)
     this.articleService.delete(this.currentArticle.id)
       .subscribe(
         response => {
-          console.log(response),
+         // console.log(response),
           this.modalService.close(id),
           this.retrieveArticles()
         },
         error => {
-          console.log(error);
+          //console.log(error);
         });
   }
 

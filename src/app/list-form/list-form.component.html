@@ -25,7 +25,7 @@
                     </div>
 
                     <div class="content table-responsive table-full-width" id="htmlData">
-                        <table id="myTable" class="table table-hover table-striped">
+                        <table  class="table table-hover table-striped">
                             <thead>
                                 <tr>
                                     <th> numero </th>
@@ -58,6 +58,8 @@
                             </tbody>
                         </table>
 
+                       
+
                     </div>
                 </div>
             </div>
@@ -68,7 +70,59 @@
     </div>
 </div>
 
-
+<table style="visibility:hidden"  id="myTable" class="table table-hover table-striped">
+    <thead>
+        <tr>
+            <th> numero </th>
+            <th> nom & prenom</th>
+            <th> code postal </th>
+            <th>numero Telephone </th>
+            <th> email </th>
+            <th> Commune </th>
+            <th> Statut </th>
+            <th> Date de rappel</th>
+            <th>Mode de Chauffage </th>
+            <th> type d'isolation </th>
+            <th>Surface de Bien</th>
+            <th> Nombre de piece </th>
+            <th> Combles aménagés </th>
+            <th> Surface combles </th>
+            <th> Surface cave </th>
+            <th> Surface Garage </th>
+            <th> Surface vide sanitaire </th>
+            <th> hauteur vide sanitaire </th>
+            <th> Lieu de maison </th>
+            <th>Nombre de personnes </th>
+            <th>Revenu Annuel </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let row of forms; let i=index;"
+        [class.active]="i == currentIndex" (mouseenter)="setActiveForm(row, i)">
+            <td> {{i +1}} </td>
+            <td>{{row.nom_prenom}}</td>
+            <td>{{row.code_postale}}</td>
+            <td>{{row.num_tel}}</td>
+            <td>{{row.email}}</td>
+            <td> {{row.commune}} </td>
+            <td>{{row.logement}}</td>
+            <td>{{row.date_rappel}}</td>
+            <td>{{row.energie_chauffage}}</td>
+            <td>{{row.isole}}</td>
+            <td>{{row.surface_ITI}}</td>
+            <td>{{row.nombre_pieces_PAC}}</td>
+            <td>{{row.combles}}</td>
+            <td>{{row.surface_combles}}</td>
+            <td>{{row.surface_cave}}</td>
+            <td>{{row.surface_garage}}</td>
+            <td>{{row.surface_vide_sanitaire}}</td> 
+            <td>{{row.hauteur_vide_sanitaire}}</td>
+            <td>{{row.lieu_maison}}</td>
+            <td>{{row.nbr_personne}}</td>
+            <td>{{row.revenu_annuel}}</td>
+        </tr>
+    </tbody>
+</table>
 
 <jw-modal id="custom-modal-1">
     <div style="justify-content: center;" class="modal-header">

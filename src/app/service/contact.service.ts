@@ -2,7 +2,9 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-const baseUrl = 'http://localhost:3000/contact';
+const baseUrl = 'https://backend.assistantrenovationenergie.fr/contact';
+
+const baseUrlNewsletter = 'https://backend.assistantrenovationenergie.fr/newsletter';
 
 @Injectable({
   providedIn: 'root'
@@ -28,6 +30,15 @@ export class ContactService {
   }
 
   getAllNewsletter() {
-    return this.http.get('http://152.228.130.141:8000/newsletters');
+    return this.http.get('https://backend.assistantrenovationenergie.fr/newsletter');
+  }
+
+
+  deleteNewsletter(id) {
+    return this.http.delete(`${baseUrlNewsletter}/${id}`);
+  }
+
+  deleteAllNewsletters() {
+    return this.http.delete(baseUrlNewsletter);
   }
 }

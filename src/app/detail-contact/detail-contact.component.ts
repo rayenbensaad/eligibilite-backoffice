@@ -39,10 +39,10 @@ export class DetailContactComponent implements OnInit {
         .subscribe(
           data => {
             this.currentContact = data;
-            console.log(data);
+            //console.log(data);
           },
           error => {
-            console.log(error);
+            //console.log(error);
           });
     }
   
@@ -58,11 +58,11 @@ export class DetailContactComponent implements OnInit {
       this.contactService.delete(this.currentContact.id)
         .subscribe(
           response => {
-            console.log(response);
+            //console.log(response);
             this.router.navigate(['/listContact']);
           },
           error => {
-            console.log(error);
+            //console.log(error);
           });
     }
     

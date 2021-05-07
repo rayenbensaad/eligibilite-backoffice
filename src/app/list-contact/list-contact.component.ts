@@ -34,10 +34,10 @@ export class ListContactComponent implements OnInit {
       .subscribe(
         data => {
           this.contacts = data;
-          console.log(data);
+          //console.log(data);
         },
         error => {
-          console.log(error);
+          //console.log(error);
         });
   }
 
@@ -72,29 +72,29 @@ export class ListContactComponent implements OnInit {
     this.contactService.deleteAll()
       .subscribe(
         response => {
-          console.log(response);
+         // console.log(response);
           this.modalService.close(id);
 
           this.refreshList();
         },
         error => {
-          console.log(error);
+         // console.log(error);
         });
   }
   exportAsXLSX():void {
     this.excelService.exportAsExcelFile(this.contacts, 'contacts_data');
   }
   deleteContact(id: string) {
-    console.log(this.currentContact.id)
+   // console.log(this.currentContact.id)
     this.contactService.delete(this.currentContact.id)
       .subscribe(
         response => {
-          console.log(response),
+         // console.log(response),
           this.modalService.close(id),
           this.retrieveContact()
         },
         error => {
-          console.log(error);
+         // console.log(error);
         });
   }
 

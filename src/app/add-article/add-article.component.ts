@@ -33,8 +33,8 @@ export class AddArticleComponent implements OnInit {
     this.selectedFile=file;
     var formData = new FormData();  
     //formData.append('File', this.selectedFile, this.selectedFile.name);
-    //console.log(this.selectedFile) 
-    console.log(this.selectedFile.name);
+    ////console.log(this.selectedFile) 
+    //console.log(this.selectedFile.name);
 
     
   }
@@ -56,11 +56,11 @@ export class AddArticleComponent implements OnInit {
     this.articleService.create(formData)
       .subscribe(
         response => {
-          console.log(response);
+          //console.log(response);
           this.submitted = true;
         },
         error => {
-          console.log(error);
+          //console.log(error);
         });
   }
 

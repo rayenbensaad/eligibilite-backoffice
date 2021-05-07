@@ -24,18 +24,18 @@ export class UserComponent implements OnInit {
     let data = JSON.parse(localStorage.getItem("user"));
     this.currentUser = data;
     this.user.email=this.currentUser.user.email;
-    console.log(this.currentUser.user)
+    //console.log(this.currentUser.user)
   }
 
 
   updatePassword(oldPass) {
 
-    //console.log(oldPass)
+    ////console.log(oldPass)
     const data = {
       password: oldPass,
       newPassword: this.user.password,
     }
-    console.log(data)
+    //console.log(data)
     this.authService.update(this.currentUser.user.id, data)
       .subscribe(
         response => {
@@ -43,7 +43,7 @@ export class UserComponent implements OnInit {
           this.router.navigate(['/login']);
         },
         error => {
-          console.log(error);
+          //console.log(error);
         });
   }
 
@@ -55,7 +55,7 @@ export class UserComponent implements OnInit {
       email: this.currentUser.user.email,
       password: password,
     }
-   // console.log(this.user)
+   // //console.log(this.user)
     this.showNewPasswordInput = true;
   }
 
@@ -65,7 +65,7 @@ export class UserComponent implements OnInit {
 
   showInput2(password) {
 
-    console.log(password);
+    //console.log(password);
     this.showNewPasswordInput2 = true;
   }
   cancel2() {
@@ -74,14 +74,14 @@ export class UserComponent implements OnInit {
 
   updateEmail(confirmPassword) {
 
-    console.log(confirmPassword);
-    console.log(this.user.email);
+    //console.log(confirmPassword);
+    //console.log(this.user.email);
 
     const data = {
       password: confirmPassword,
       email: this.user.email,
     }
-    console.log(data)
+    //console.log(data)
     this.authService.updateEmail(this.currentUser.user.id, data)
       .subscribe(
         response => {
@@ -89,7 +89,7 @@ export class UserComponent implements OnInit {
           this.router.navigate(['/login']);
         },
         error => {
-          console.log(error);
+          //console.log(error);
         });
   }
 

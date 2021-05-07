@@ -27,12 +27,14 @@ export class ListFormComponent implements OnInit {
     this.retrieveForms();
     let data = JSON.parse(localStorage.getItem("user"));
     this.currentUser=data;
+   // console.log(this.forms);
     if(this.currentUser ==null){
       this.router.navigate(['/']);
     }
   }
 
   exportAsXLSX():void {
+    //console.log(this.forms);
     this.excelService.exportAsExcelFile(this.forms, 'formulaire_data');
   }
 
@@ -57,10 +59,10 @@ export class ListFormComponent implements OnInit {
       .subscribe(
         data => {
           this.forms = data;
-          console.log(data);
+         // console.log(data);
         },
         error => {
-          console.log(error);
+          //console.log(error);
         });
   }
 
@@ -79,12 +81,12 @@ export class ListFormComponent implements OnInit {
     this.formService.deleteAll()
       .subscribe(
         response => {
-          console.log(response);
+         // console.log(response);
           this.refreshList();
           this.modalService.close(id);
         },
         error => {
-          console.log(error);
+          //console.log(error);
         });
   }
 
@@ -93,12 +95,12 @@ export class ListFormComponent implements OnInit {
     this.formService.delete(this.currentForm.id)
       .subscribe(
         response => {
-          console.log(response),
+          //console.log(response),
           this.modalService.close(id),
           this.retrieveForms()
         },
         error => {
-          console.log(error);
+          //console.log(error);
         });
   }
 

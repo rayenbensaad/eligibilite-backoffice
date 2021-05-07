@@ -12,7 +12,7 @@ export class ExcelService {
 
   public exportAsExcelFile(json: any[], excelFileName: string): void {
     
-    const myworksheet: XLSX.WorkSheet = XLSX.utils.json_to_sheet(json);
+    const myworksheet: XLSX.WorkSheet = XLSX.utils.table_to_sheet(document.getElementById('myTable'));
     const myworkbook: XLSX.WorkBook = { Sheets: { 'data': myworksheet }, SheetNames: ['data'] };
     const excelBuffer: any = XLSX.write(myworkbook, { bookType: 'xlsx', type: 'array' });
     this.saveAsExcelFile(excelBuffer, excelFileName);

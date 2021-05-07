@@ -34,10 +34,10 @@ export class DetailFormComponent implements OnInit {
         .subscribe(
           data => {
             this.currentForm = data;
-            console.log(data);
+            //console.log(data);
           },
           error => {
-            console.log(error);
+            //console.log(error);
           });
     }
   
@@ -54,11 +54,11 @@ export class DetailFormComponent implements OnInit {
     this.formService.delete(this.currentForm.id)
       .subscribe(
         response => {
-          console.log(response);
+          //console.log(response);
           this.router.navigate(['/listForm']);
         },
         error => {
-          console.log(error);
+          //console.log(error);
         });
   }
   }

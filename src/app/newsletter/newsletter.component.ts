@@ -14,14 +14,16 @@ export class NewsletterComponent implements OnInit {
   newsletter: any;
   currentIndex = -1;
   currentUser;
+  currentNewsletter = null;
+
   constructor(private contactService: ContactService,
-    private router: Router ,private modalService: ModalService) { }
+    private router: Router, private modalService: ModalService) { }
 
   ngOnInit(): void {
     this.retrieveForms();
     let data = JSON.parse(localStorage.getItem("user"));
-    this.currentUser=data;
-    if(this.currentUser ==null){
+    this.currentUser = data;
+    if (this.currentUser == null) {
       this.router.navigate(['/']);
     }
   }
@@ -32,10 +34,10 @@ export class NewsletterComponent implements OnInit {
       .subscribe(
         data => {
           this.newsletter = data;
-          console.log(data);
+          //console.log(data);
         },
         error => {
-          console.log(error);
+          //console.log(error);
         });
   }
 
@@ -51,10 +53,44 @@ export class NewsletterComponent implements OnInit {
 
   openModal(id: string) {
     this.modalService.open(id);
-}
+  }
 
-closeModal(id: string) {
+  closeModal(id: string) {
     this.modalService.close(id);
+  }
+
+  setActiveForm(form, index) {
+    this.currentNewsletter = form;
+    this.currentIndex = index;
+  }
+  deleteNewsletter(id: string) {
+   // console.log(this.currentNewsletter);
+    this.contactService.deleteNewsletter(this.currentNewsletter.id)
+      .subscribe(
+        response => {
+         // console.log(response),
+          this.modalService.close(id),
+          this.retrieveForms()
+        },
+        error => {
+          //console.log(error);
+        });
+  }
+
+
+
+  removeAllNewsletters(id: string) {
+    this.contactService.deleteAllNewsletters()
+      .subscribe(
+        response => {
+         // console.log(response);
+          this.refreshList();
+          this.modalService.close(id);
+        },
+        error => {
+         // console.log(error);
+        });
+  }
 }
 
-}
+

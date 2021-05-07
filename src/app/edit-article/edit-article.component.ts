@@ -35,10 +35,10 @@ export class EditArticleComponent implements OnInit {
         .subscribe(
           data => {
             this.currentArticle = data;
-            console.log(data);
+            //console.log(data);
           },
           error => {
-            console.log(error);
+            //console.log(error);
           });
     }
   
@@ -48,11 +48,11 @@ export class EditArticleComponent implements OnInit {
       this.articleService.update(this.currentArticle.id, this.currentArticle)
         .subscribe(
           response => {
-            console.log(response);
+            //console.log(response);
             this.router.navigate(['/listArticle']);
           },
           error => {
-            console.log(error);
+            //console.log(error);
           });
     }
   
@@ -60,11 +60,11 @@ export class EditArticleComponent implements OnInit {
       this.articleService.delete(this.currentArticle.id)
         .subscribe(
           response => {
-            console.log(response);
+            //console.log(response);
             this.router.navigate(['/listArticle']);
           },
           error => {
-            console.log(error);
+            //console.log(error);
           });
     }
 
